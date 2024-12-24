@@ -20,7 +20,7 @@ namespace SocialConnect.Models
 
 
 
-        public virtual ICollection<Comments> Comments { get; set; } = new List<Comments>();
+        public virtual ICollection<Comments> PostsComments { get; set; } = new List<Comments>();
         public virtual ICollection<Likes> Likes { get; set; } = new List<Likes>();
 
     }
