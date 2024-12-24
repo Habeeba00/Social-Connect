@@ -3,19 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialConnect.Models
 {
-    public class Likes
+    public class Like
     {
         [Key]
-        public string LikeId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("Users")]
         public string UserId { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual User Users { get; set; }
 
-        [ForeignKey("Posts")]
-        public string PostsId { get; set; }
+        [ForeignKey("Post")]
+        public int Post_Id { get; set; }
 
-        public virtual Posts Posts { get; set; } 
+        public virtual Post Post { get; set; } 
 
 
 
