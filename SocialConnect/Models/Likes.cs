@@ -6,14 +6,14 @@ namespace SocialConnect.Models
     public class Likes
     {
         [Key]
-        public int LikeId { get; set; }
+        public string LikeId { get; set; } = Guid.NewGuid().ToString();
 
-        [ForeignKey("Users")]
+        [ForeignKey("UserLikes")]
         public string UserId { get; set; }
-        public virtual User Users { get; set; }
+        public virtual User UserLikes { get; set; }
 
         [ForeignKey("Post")]
-        public int Post_Id { get; set; }
+        public string Post_Id { get; set; }
 
         public virtual Post Post { get; set; }
         public bool IsDeleted { get; set; } = false;

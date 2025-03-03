@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SocialConnect.MappingConfigs;
@@ -16,14 +17,11 @@ namespace SocialConnect
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
-                // Add Swagger configurations
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Title = "SocialConnect API",
@@ -37,14 +35,34 @@ namespace SocialConnect
                 });
                 options.EnableAnnotations();
             });
-            builder.Services.AddDbContext<SocialConnectDBContext>(option => option.UseLazyLoadingProxies(false).UseSqlServer(builder.Configuration.GetConnectionString("con")));
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SocialConnectDBContext>();
+            builder.Services.AddDbContext<SocialConnectDBContext>(option => option.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("con")));
+            builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<SocialConnectDBContext>();
             builder.Services.AddScoped<UnitOfWork>();
             builder.Services.AddAutoMapper(typeof(MapppingConfig));
+            builder.Services.AddAuthentication(option => {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                        })
+                .AddJwtBearer(
+                op =>
+                {
+                    //op.SaveToken = true;
+                    #region secret key
+                    var key = "welcome to my secret key Habiba Mohamed";
+                    var secretkey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
+                    #endregion
+                    op.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        IssuerSigningKey = secretkey,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+  
+                    };
+                });
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -53,10 +71,12 @@ namespace SocialConnect
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
             app.MapControllers();
+
 
             app.Run();
         }

@@ -4,7 +4,7 @@ namespace SocialConnect.Models
 {
     public class UserFollower
     {
-        public Guid UserFollowerId { get; set; }
+        public string FollowId { get; set; } = Guid.NewGuid().ToString();
 
         [ForeignKey("Follower")]
         public string FollowerId { get; set; }

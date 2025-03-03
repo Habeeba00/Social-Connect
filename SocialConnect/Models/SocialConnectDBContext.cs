@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SocialConnect.Models
 {
-    public class SocialConnectDBContext : IdentityDbContext
+    public class SocialConnectDBContext : IdentityDbContext<User>
     {
         public SocialConnectDBContext(DbContextOptions<SocialConnectDBContext> options) : base(options) { }
 
@@ -17,18 +17,13 @@ namespace SocialConnect.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // Apply global query filters for User entity only, not IdentityUser
-            modelBuilder.Entity<IdentityUser>().HasQueryFilter(u => !EF.Property<bool>(u, "IsDeleted"));
-
+            modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
             modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDeleted && !p.UserPost.IsDeleted);
             modelBuilder.Entity<Comment>().HasQueryFilter(c => !c.IsDeleted && !c.UserComment.IsDeleted && !c.Posts.IsDeleted);
-            modelBuilder.Entity<Likes>().HasQueryFilter(l => !l.Users.IsDeleted && !l.Post.IsDeleted);
+            modelBuilder.Entity<Likes>().HasQueryFilter(l => !l.UserLikes.IsDeleted && !l.Post.IsDeleted);
             modelBuilder.Entity<UserFollower>().HasQueryFilter(uf => !uf.Follower.IsDeleted && !uf.FollowedUser.IsDeleted);
 
 
-
-            // Configure relationships
             modelBuilder.Entity<UserFollower>()
                 .HasKey(uf => new { uf.FollowedUserId, uf.FollowerId });
 
@@ -68,7 +63,7 @@ namespace SocialConnect.Models
 
             modelBuilder.Entity<Likes>(entity =>
             {
-                entity.HasOne(l => l.Users)
+                entity.HasOne(l => l.UserLikes)
                       .WithMany(u => u.Likes)
                       .HasForeignKey(l => l.UserId)
                       .OnDelete(DeleteBehavior.Restrict);
@@ -78,6 +73,9 @@ namespace SocialConnect.Models
                       .HasForeignKey(l => l.Post_Id)
                       .OnDelete(DeleteBehavior.Restrict);
             });
+        
+        
+        
         }
 
     }

@@ -18,10 +18,6 @@ namespace SocialConnect.UnitOfWorks
         {
             this.db = db;
         }
-        //public IQueryable<User> GetActiveUsers()
-        //{
-        //    return db.Users.Where(u => !EF.Property<bool>(u, "IsDeleted"));
-        //}
 
 
         public GenericRepository<User> UserRepo 
@@ -66,7 +62,7 @@ namespace SocialConnect.UnitOfWorks
         }
 
 
-        public GenericRepository<UserFollower> UserFollowerRepo 
+        public GenericRepository<UserFollower> FollowerRepo 
         {
             get 
             {
@@ -81,7 +77,7 @@ namespace SocialConnect.UnitOfWorks
         }
 
 
-        public void SoftDeleteUser(int userId)
+        public void SoftDeleteUser(string userId)
         {
             var user = UserGenericRepository.GetById(userId);
             if (user == null)

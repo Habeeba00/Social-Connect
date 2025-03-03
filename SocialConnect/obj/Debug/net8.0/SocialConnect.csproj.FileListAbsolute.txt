@@ -547,3 +547,6 @@ D:\LearnIt BootCamp\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug
 D:\LearnIt BootCamp\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\SocialConnect.pdb
 D:\LearnIt BootCamp\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\SocialConnect.genruntimeconfig.cache
 D:\LearnIt BootCamp\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\ref\SocialConnect.dll
+D:\LearnIt BootCamp .NET\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\SocialConnect.dll
+D:\LearnIt BootCamp .NET\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\refint\SocialConnect.dll
+D:\LearnIt BootCamp .NET\Projects\SocialConnect\SocialConnect\SocialConnect\obj\Debug\net8.0\SocialConnect.pdb

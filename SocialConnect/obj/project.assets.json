@@ -5261,23 +5261,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Habiba\\.nuget\\packages\\": {},
+    "C:\\Users\\hbeba\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LearnIt BootCamp\\Projects\\SocialConnect\\SocialConnect\\SocialConnect\\SocialConnect.csproj",
+      "projectUniqueName": "D:\\LearnIt BootCamp .NET\\SocialConnect\\SocialConnect\\SocialConnect.csproj",
       "projectName": "SocialConnect",
-      "projectPath": "D:\\LearnIt BootCamp\\Projects\\SocialConnect\\SocialConnect\\SocialConnect\\SocialConnect.csproj",
-      "packagesPath": "C:\\Users\\Habiba\\.nuget\\packages\\",
-      "outputPath": "D:\\LearnIt BootCamp\\Projects\\SocialConnect\\SocialConnect\\SocialConnect\\obj\\",
+      "projectPath": "D:\\LearnIt BootCamp .NET\\SocialConnect\\SocialConnect\\SocialConnect.csproj",
+      "packagesPath": "C:\\Users\\hbeba\\.nuget\\packages\\",
+      "outputPath": "D:\\LearnIt BootCamp .NET\\SocialConnect\\SocialConnect\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Habiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hbeba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5368,7 +5368,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

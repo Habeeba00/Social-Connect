@@ -8,25 +8,32 @@ namespace SocialConnect.Models
     {
 
         #region User Profile Details
-        //public string Username { get; set; }
+        public string FullName { get; set; }
+
         public string Email { get; set; }
+        public string? PhoneNumber { get; set; }
 
-        public string Password { get; set; }
+        public string? Bio { get; set; }
+        public string? Address { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
         [NotMapped]
-        public string ConfirmPassword { get; set; }
-        public string PhoneNumber { get; set; }
+        public IFormFile? Picture { get; set; }
+        public string? Relationship  { get; set; }
+        public string? Education { get; set; }
+        public enum GenderType
+        {
+            Male,
+            Female,
+            Unspecified
+        }
 
-        public string Bio { get; set; }
-        public string Address { get; set; }
-        public DateOnly DateOfBirth { get; set; }
-        [NotMapped]
-        public IFormFile Picture { get; set; }
-        public string Relationship  { get; set; }
-        public string Education { get; set; }
-
-
+        public GenderType? Gender { get; set; }
         #endregion
         public bool IsDeleted { get; set; } = false;
+        public string? Photopath { get; set; }
+        public int? FollowersCount =>Followers?.Count??0;
+        public int? FollowingCount => Following?.Count ?? 0;
+
         public virtual ICollection<UserFollower> Followers { get; set; } = new List<UserFollower>();
         public virtual ICollection<UserFollower> Following { get; set; } = new List<UserFollower>();
         public virtual ICollection<Post> Posts { get; set; }=new List<Post>();
